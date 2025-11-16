@@ -1,7 +1,7 @@
 from fastmcp import FastMCP
-from tools import register_tools
-from resources import register_resources
-from prompts import register_prompts
+from .tools import register_tools
+from .resources import register_resources
+from .prompts import register_prompts
 
 # Define MCP server
 design_patterns_mcp = FastMCP(name="DesignPatterns")
