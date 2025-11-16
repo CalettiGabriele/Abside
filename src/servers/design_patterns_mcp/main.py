@@ -1,17 +1,15 @@
 from fastmcp import FastMCP
+from tools import register_tools
+from resources import register_resources
+from prompts import register_prompts
 
-# Define subservers
-weather_mcp = FastMCP(name="WeatherService")
+# Define MCP server
+design_patterns_mcp = FastMCP(name="DesignPatterns")
 
-@weather_mcp.tool
-def get_forecast(city: str) -> dict:
-    """Get weather forecast."""
-    return {"city": city, "forecast": "Sunny"}
-
-@weather_mcp.resource("data://cities/supported")
-def list_supported_cities() -> list[str]:
-    """List cities with weather support."""
-    return ["London", "Paris", "Tokyo"]
+# Register tools, resources, and prompts
+register_tools(design_patterns_mcp)
+register_resources(design_patterns_mcp)
+register_prompts(design_patterns_mcp)
 
 if __name__ == "__main__":
-    weather_mcp.run()
+    design_patterns_mcp.run()
