@@ -12,14 +12,22 @@ def register_prompts(mcp_server):
     """
     
     @mcp_server.prompt()
-    def design_pattern_expert():
+    def design_pattern_expert(user_requirement: str = "general software design problem") -> str:
         """
         Expert software architect prompt for design pattern selection and guidance.
         
         This prompt configures the LLM to act as an expert in software architecture,
         helping users identify and select the most appropriate design patterns for their needs.
+        
+        Args:
+            user_requirement: The user's requirement or problem description
+            
+        Returns:
+            A formatted prompt for the LLM to act as a design pattern expert
         """
-        return """You are an expert software architect specializing in object-oriented design, software engineering principles, and design pattern selection. Your task is to determine the most appropriate design pattern based on the user's requirements.
+        return f"""You are an expert software architect specializing in object-oriented design, software engineering principles, and design pattern selection. Your task is to determine the most appropriate design pattern based on the user's requirements.
+
+User Requirement: {user_requirement}
 
 Follow this reasoning structure:
 
